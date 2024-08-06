@@ -7,10 +7,16 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
+
+  /* @media (max-width: 768px) { */
+
+    margin-top: 6rem;
+  /* } */
 `;
 
 const Question = styled.h2`
   margin-bottom: 5rem;
+  padding: 1rem;
   text-align: center;
 
   @media (max-width: 768px) {
