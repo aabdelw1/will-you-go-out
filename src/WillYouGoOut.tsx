@@ -11,6 +11,12 @@ const Container = styled.div`
 
 const Question = styled.h2`
   margin-bottom: 5rem;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 interface ButtonProps {
@@ -40,7 +46,19 @@ const Button = styled.button<ButtonProps>`
   }
 
   @media (max-width: 768px) {
-    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 10px;
+    position: static;
+  }
+`;
+
+const StyledImage = styled.img`
+  margin-bottom: 1px;
+  
+  @media (max-width: 768px) {
+    width: 80%;
+    height: auto;
   }
 `;
 
@@ -78,14 +96,14 @@ const WillYouGoOut: React.FC = () => {
   if (isAccepted) {
     return (
       <Container>
-        <img src="/pirates.gif" alt="Celebration" />
+        <StyledImage src="/pirates.gif" alt="Celebration" />
       </Container>
     );
   }
 
   return (
     <Container>
-      <img src="/flowers.gif" alt="Cute rose" style={{ marginBottom: "1px" }} />
+      <StyledImage src="/flowers.gif" alt="Cute rose" />
       <Question>Dinner Thursday followed by a fun surprise?</Question>
       <div>
         <Button
