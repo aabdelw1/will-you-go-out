@@ -16,7 +16,7 @@ const Container = styled.div<ContainerProps>`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  margin-top: ${(props) => (props.isImage ? '-10rem' : '6rem')};
+  margin-top: ${(props) => (props.isImage ? '-10rem' : '4rem')};
 `;
 
 const Question = styled.h2`
