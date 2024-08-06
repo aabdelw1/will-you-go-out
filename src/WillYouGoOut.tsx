@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const Container = styled.div`
+interface ContainerProps {
+    isImage?: boolean;
+  }
+
+  interface StyledImageProps {
+    isAccepted?: boolean;
+  }
+  
+
+const Container = styled.div<ContainerProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-
-  /* @media (max-width: 768px) { */
-
-    margin-top: 6rem;
-  /* } */
+  margin-top: ${(props) => (props.isImage ? '-10rem' : '6rem')};
 `;
 
 const Question = styled.h2`
@@ -56,14 +61,17 @@ const Button = styled.button<ButtonProps>`
   }
 `;
 
-const StyledImage = styled.img`
+const StyledImage = styled.img<StyledImageProps>`
   margin-bottom: 1px;
+  width: ${(props) => (props.isAccepted ? '100%' : 'auto')};
+  height: ${(props) => (props.isAccepted ? 'auto' : 'auto')};
 
   @media (max-width: 768px) {
     width: 80%;
     height: auto;
   }
 `;
+
 
 const WillYouGoOut: React.FC = () => {
   const [isAccepted, setIsAccepted] = useState<boolean>(false);
@@ -101,8 +109,8 @@ const WillYouGoOut: React.FC = () => {
 
   if (isAccepted) {
     return (
-      <Container>
-        <StyledImage src="/pirates.gif" alt="Celebration" />
+      <Container isImage>
+        <StyledImage src="/pirates.gif" alt="Celebration" isAccepted={isAccepted}/>
       </Container>
     );
   }
