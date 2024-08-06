@@ -21,8 +21,6 @@ const Question = styled.h2`
 
 interface ButtonProps {
   isyesbutton?: boolean;
-  padding?: number;
-  fontSize?: number;
   randomPosition?: boolean;
   top?: string;
   left?: string;
@@ -49,13 +47,12 @@ const Button = styled.button<ButtonProps>`
     padding: 10px 20px;
     font-size: 18px;
     margin: 10px;
-    position: static;
   }
 `;
 
 const StyledImage = styled.img`
   margin-bottom: 1px;
-  
+
   @media (max-width: 768px) {
     width: 80%;
     height: auto;
@@ -84,12 +81,15 @@ const WillYouGoOut: React.FC = () => {
       const newCount = prevCount + 1;
       return newCount;
     });
-    console.log(`She clicked No ${noClickCount} times`);
 
+    console.log(`She clicked No ${noClickCount} times`);
+    function getRndInteger(min: number, max: number): number {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
     setRandomPosition(true);
     setNoButtonPosition({
-      top: `${Math.random() * 80}vh`,
-      left: `${Math.random() * 80}vw`,
+        top: `${getRndInteger(-40, 10)}vh`,
+        left: `${getRndInteger(-10, 50)}vw`,
     });
   };
 
@@ -105,12 +105,13 @@ const WillYouGoOut: React.FC = () => {
     <Container>
       <StyledImage src="/flowers.gif" alt="Cute rose" />
       <Question>Dinner Thursday followed by a fun surprise?</Question>
-      <div>
+      <div style={{ position: 'relative', width: '100%', height: '100%' }}>
         <Button
           onClick={handleNoClick}
           randomPosition={randomPosition}
           top={noButtonPosition.top}
           left={noButtonPosition.left}
+          style={{ position: randomPosition ? 'absolute' : 'static' }}
         >
           No
         </Button>
