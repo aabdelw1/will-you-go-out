@@ -118,7 +118,7 @@ const WillYouGoOut: React.FC = () => {
   return (
     <Container>
       <StyledImage src="/flowers.gif" alt="Cute rose" />
-      <Question>Dinner Thursday followed by a fun surprise?</Question>
+      <Question>Dinner Thursday followed by a fun thing?</Question>
       <div style={{ position: 'relative', width: '100%', height: '100%' }}>
         <Button
           onClick={handleNoClick}
